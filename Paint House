@@ -96,3 +96,6 @@ class Solution {
         return Math.min(costs[0][0], Math.min(costs[0][1], costs[0][2]));
     }
 }
+
+
+for more than 3 colors, we can use a for loop for cols too then the complexity will be O(m * n)
