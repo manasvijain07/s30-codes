@@ -41,7 +41,7 @@ class Solution {
             //find next i, j
             if(dir == 1)
             {
-                if(j == n - 1)
+                if(j == n - 1)   // this condition should be above i == 0 as otherwise it will fail
                 {
                     i++;
                     dir = -1;
