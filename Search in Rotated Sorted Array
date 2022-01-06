@@ -32,6 +32,8 @@ nums is an ascending array that is possibly rotated.
 
 -----------------------*******------------------------
 
+// Always Remember - In Rotated sorted array, atleast one part will always be sorted. So find out sorted part, check if element lies in that part and apply binary search accordingly.
+
 Solution - Binary Search - TC - O(log n)  SC - O(1)
 
 class Solution {
