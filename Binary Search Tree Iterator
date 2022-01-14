@@ -46,7 +46,7 @@ Could you implement next() and hasNext() to run in average O(1) time and use O(h
 ------------------------------**********-----------------------
 
 Solution - TC - O(h) h - height of tree
-          SC - O(1)
+          SC - O(n) n - no of elements in tree
 
 /**
  * Definition for a binary tree node.
