@@ -24,9 +24,9 @@ The number of nodes in the tree is in the range [0, 2000].
 
 -------------****---------------
 
-Solution 1 - Using queue - 
+Solution 1 - BFS - Using queue - 
               TC - O(n) where n - no of nodes
-              SC - O(total leaf nodes) = O(2 ^ (height of tree - 1))
+              SC - O(total leaf nodes) = O(2 ^ (height of tree - 1)) or O(n/2) where n - no of nodes
 
 /**
  * Definition for a binary tree node.
@@ -74,7 +74,7 @@ class Solution {
     }
 }
 
-Solution 2 - Using Recursion
+Solution 2 - DFS - Using Recursion and HashMap
               TC - O(n)
               SC - O(n)
 
@@ -120,6 +120,50 @@ class Solution {
             map.put(level, new ArrayList<>());
         }
         map.get(level).add(root.val);
+        helper(root.left, level + 1);
+        helper(root.right, level + 1);
+    }
+}
+
+Solution 3 - DFS - without using hashmap
+            TC - O(n)
+            SC - O(1)
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    List<List<Integer>> result;
+    
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        result = new ArrayList<>();
+        if(root == null)
+            return result;
+        helper(root, 0);
+        return result;
+        
+    }
+    
+    private void helper(TreeNode root, int level)
+    {
+        if(root == null) return;
+        if(level == result.size())
+        {
+            result.add(new ArrayList<>());
+        }
+        result.get(level).add(root.val);
         helper(root.left, level + 1);
         helper(root.right, level + 1);
     }
