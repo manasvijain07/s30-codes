@@ -119,3 +119,56 @@ class Solution {
         
     }
 }
+
+
+--------------------------
+
+Solution 3 - no sorting
+TC - O(n * k) where n - lenth of strs and k - max length of string in strs
+SC - O(n * k)
+
+class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+        List<List<String>> res = new ArrayList<>();
+        
+        HashMap<String, List<String>> map = new HashMap<>();
+        int m = strs.length;
+        
+        if(strs == null || m == 0)
+            return res;
+        
+        for(String str: strs)
+        {
+            StringBuilder sb = new StringBuilder();
+            HashMap<Character, Integer> innerMap = new HashMap<>();
+            for(int j = 0; j < str.length(); j++)
+            {
+                innerMap.put(str.charAt(j), innerMap.getOrDefault(str.charAt(j), 0) + 1);
+            }
+            
+            for(char i = 'a'; i <= 'z'; i++)
+            {
+                int count = 0;
+                if(innerMap.containsKey(i))
+                {
+                    count = innerMap.get(i);
+                }
+                sb.append(i + count);
+            }
+            
+            String s = sb.toString();
+            if(!map.containsKey(s))
+            {
+                map.put(s, new ArrayList());
+            }
+            map.get(s).add(str);
+        }
+        
+        for(String key: map.keySet())
+        {
+            res.add(map.get(key));
+        }
+        return res;
+    }
+}
+
